@@ -22,3 +22,7 @@ Minimalist blog website created in Javascript
 
 ### 3. Run
 `node app.js`
+
+
+## License:
+Based on project challenge from The Complete 2020 Web Development Bootcamp, from Angela Yu
