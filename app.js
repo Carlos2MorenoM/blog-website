@@ -13,16 +13,38 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost:27017/blogDB',{useNewUrlParser:true},{useUnifiedTopology: true});
+var posts = [];
 
+//Mongoose Connection
+mongoose.connect('mongodb://localhost:27017/blogDB',{useNewUrlParser:true},{useUnifiedTopology: true});
 
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const postSchema = {
+
+  title: String,
+  content: String
+ };
+
+ const Post = mongoose.model("Post",postSchema);
 
 
 
+
+ //Home Route
+ app.get("/",function(req,res){
+   res.render('home', {
+     homeStartingContent: homeStartingContent,
+     posts: posts
+   })
+ })
+
+//Compose Route
+app.get("/compose",function(req,res){
+  res.render('compose',)
+});
 
 
 app.listen(3000, function() {
